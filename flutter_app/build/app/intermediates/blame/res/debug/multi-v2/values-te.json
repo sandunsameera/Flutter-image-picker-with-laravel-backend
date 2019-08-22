@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/deemonface/Desktop/Flutter-image-picker-with-node-backend/flutter_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-te/values-te.xml",
+            "map": [
+                {
+                    "source": "/home/deemonface/.gradle/caches/transforms-1/files-1.1/core-1.0.2.aar/edefa2e6e2a275e1e18a93be82da0292/res/values-te/values-te.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}
