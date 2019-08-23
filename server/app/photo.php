@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class photo extends Model
 {
     protected $table = 'photos';
-    protected $fillable = ['date','description'];
+    protected $fillable = ['date'];
+    protected $nullable = ['description'];
 
 }
