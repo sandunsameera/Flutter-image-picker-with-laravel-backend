@@ -1,8 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Widget/LabelTextField.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+
+String apiUrl = "http://10.0.2.2:8000/api/photo";
 
 class Homepage extends StatefulWidget {
   @override
@@ -12,37 +16,72 @@ class Homepage extends StatefulWidget {
 }
 
 class HomepageState extends State<Homepage> {
+
+  static TextEditingController _dateController = TextEditingController();
+  static TextEditingController _decriptionController = TextEditingController();
+
+  void create(BuildContext context) async{
+    final Map<String, dynamic> data={
+      'date' :_dateController.text,
+      'description' : _decriptionController.text
+    };
+
+    var response = await http.post(apiUrl ,body: data,encoding: Encoding.getByName("application/json"));
+    print("------------------------------------");
+    print(_dateController.text);
+    print(_decriptionController.text);
+    print(response.body);
+    print("-------------------------------------");
+  }
+
   File _image;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         label: Text("Add Camera"),
-        onPressed: (){},
+        onPressed: (){
+          getImageGallery();
+        },
         backgroundColor: Colors.teal,
         icon: Icon(Icons.photo_camera),
       ),
       appBar: AppBar(
         title: Text("Image picker"),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        child: Container(
+        decoration: BoxDecoration(
+          // color: Colors.orangeAccent.withOpacity(0.3)
+        ),
         child: Column(
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(10.0),
+            ),
             LabelTextField(
               hintText: "Enter Date",
               labelText: "Date",
+              textEditingController:_dateController,
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0),
             ),
             LabelTextField(
               hintText: "Enter little discription",
               labelText: "Discription",
+              textEditingController: _decriptionController,
+            ),
+            Padding(
+              padding: EdgeInsets.all(6.0),
             ),
             Center(
               child: _image == null
                   ? ButtonTheme(
-                      height: 150.0,
+                      height: 60.0,
                       child: RaisedButton(
                         onPressed: () {
-                          getImageGallery();
+                          getImageCamera();
                         },
                         child: Text(
                           "Add photo",
@@ -52,13 +91,38 @@ class HomepageState extends State<Homepage> {
                     )
                   : Image.file(_image,height: 700.0,width: MediaQuery.of(context).size.width,),
             ),
+            Padding(
+              padding: EdgeInsets.all(10.0),
+            ),
+            Center(
+              child:CircleAvatar(
+                maxRadius: 40.0,
+                backgroundColor: Colors.orangeAccent.withOpacity(0.3),
+                child:  IconButton(
+                icon: Icon(Icons.done),
+                onPressed: (){
+                  create(context);
+                },
+                color: Colors.purple,
+              ),
+              ),
+            )
           ],
         ),
       ),
-    );
+
+      ),    );
   }
 
   Future getImageGallery() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+   Future getImageCamera() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
 
     setState(() {

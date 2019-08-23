@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/deemonface/Desktop/Flutter-image-picker-with-node-backend/flutter_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-mn/values-mn.xml",
+            "outputFile": "C:\\Users\\deemonface\\Desktop\\Flutter-image-picker-with-node-backend\\flutter_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-mn\\values-mn.xml",
             "map": [
                 {
-                    "source": "/home/deemonface/.gradle/caches/transforms-1/files-1.1/core-1.0.2.aar/edefa2e6e2a275e1e18a93be82da0292/res/values-mn/values-mn.xml",
+                    "source": "C:\\Users\\deemonface\\.gradle\\caches\\transforms-1\\files-1.1\\core-1.0.2.aar\\b89bcea9d704d1d2e3de2c10a807d986\\res\\values-mn\\values-mn.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
