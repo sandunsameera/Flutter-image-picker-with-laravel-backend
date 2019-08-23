@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Screens/SecondScreen.dart';
 import 'package:flutter_app/Widget/LabelTextField.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+
 
 String apiUrl = "http://10.0.2.2:8000/api/photo";
 
@@ -18,23 +20,28 @@ class Homepage extends StatefulWidget {
 class HomepageState extends State<Homepage> {
 
   static TextEditingController _dateController = TextEditingController();
-  static TextEditingController _decriptionController = TextEditingController();
+  static TextEditingController _descriptionController = TextEditingController();
+  File _image;
+
 
   void create(BuildContext context) async{
     final Map<String, dynamic> data={
       'date' :_dateController.text,
-      'description' : _decriptionController.text
+      'description' : _descriptionController.text
     };
-
     var response = await http.post(apiUrl ,body: data,encoding: Encoding.getByName("application/json"));
+
+
+    print("------------------------------------");
+    print(response.statusCode);
     print("------------------------------------");
     print(_dateController.text);
-    print(_decriptionController.text);
+    print(_descriptionController.text);
     print(response.body);
     print("-------------------------------------");
-  }
 
-  File _image;
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,8 +76,8 @@ class HomepageState extends State<Homepage> {
             ),
             LabelTextField(
               hintText: "Enter little discription",
-              labelText: "Discription",
-              textEditingController: _decriptionController,
+              labelText: "Description",
+              textEditingController: _descriptionController,
             ),
             Padding(
               padding: EdgeInsets.all(6.0),
@@ -95,17 +102,13 @@ class HomepageState extends State<Homepage> {
               padding: EdgeInsets.all(10.0),
             ),
             Center(
-              child:CircleAvatar(
-                maxRadius: 40.0,
-                backgroundColor: Colors.orangeAccent.withOpacity(0.3),
-                child:  IconButton(
-                icon: Icon(Icons.done),
-                onPressed: (){
-                  create(context);
-                },
-                color: Colors.purple,
-              ),
-              ),
+             child: RaisedButton(
+               child: Icon(Icons.done),
+               onPressed: (){
+                //  create(context);
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondScreen()));
+               },
+             ),
             )
           ],
         ),
