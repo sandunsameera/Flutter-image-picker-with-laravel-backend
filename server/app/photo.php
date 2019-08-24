@@ -9,5 +9,4 @@ class photo extends Model
     protected $table = 'photos';
     protected $fillable = ['date'];
     protected $nullable = ['description'];
-
 }

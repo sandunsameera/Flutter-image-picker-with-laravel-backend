@@ -11,9 +11,15 @@ class ApiController extends Controller
         $photo = new photo();
 
         $photo -> date = $request->input('date');
-        $photo -> description = $request->input('discription');
-
+        $photo -> description = $request->input('description');
         $photo->save();
         return response()->json($photo);
+    }
+
+    public function retrieve(){
+        $photo = photo::all();
+        return response()->json($photo);
+
+
     }
 }
