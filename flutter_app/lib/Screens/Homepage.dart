@@ -31,14 +31,9 @@ class HomepageState extends State<Homepage> {
     };
     var response = await http.post(apiUrl ,body: data,encoding: Encoding.getByName("application/json"));
 
-
-    print("------------------------------------");
-    print(response.statusCode);
-    print("------------------------------------");
-    print(_dateController.text);
-    print(_descriptionController.text);
-    print(response.body);
-    print("-------------------------------------");
+    if(response.statusCode == 200){
+      print("clicked");
+    }
 
     
   }
@@ -105,7 +100,7 @@ class HomepageState extends State<Homepage> {
              child: RaisedButton(
                child: Icon(Icons.done),
                onPressed: (){
-                //  create(context);
+                 create(context);
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondScreen()));
                },
              ),
