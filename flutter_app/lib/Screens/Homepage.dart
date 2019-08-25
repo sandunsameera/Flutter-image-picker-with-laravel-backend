@@ -96,14 +96,26 @@ class HomepageState extends State<Homepage> {
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
-            Center(
-             child: RaisedButton(
+            Center(child:ButtonBar(
+              children:[
+                RaisedButton(
                child: Icon(Icons.done),
                onPressed: (){
                  create(context);
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondScreen()));
                },
              ),
+             RaisedButton(
+               child: Text("View data"),
+               onPressed: (){
+                 Navigator.push(context, MaterialPageRoute(
+                   builder: (context)=>SecondScreen(),
+                 ));
+               },
+             ),
+              ],
+               
+            ),
             )
           ],
         ),

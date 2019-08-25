@@ -19,11 +19,12 @@ class SecondScreen extends StatefulWidget{
   void initState() {
     super.initState();
 
-    this.getJsonData();
+    this.getJsonData(context);
 
   }
 
-  Future<String> getJsonData() async{
+  void getJsonData(BuildContext context) async{
+
     var response = await http.get(
       Uri.encodeFull(api),
       headers: {"Accept":"applicaation/json"}
@@ -32,7 +33,8 @@ class SecondScreen extends StatefulWidget{
 
     setState(() {
       var convertDataToJson = json.decode(response.body);
-
+      print("--------------------------------------------");
+      print(data);
       data = convertDataToJson['data']["date"]; 
     });
   }
