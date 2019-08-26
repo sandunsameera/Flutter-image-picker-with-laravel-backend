@@ -13,8 +13,7 @@ class SecondScreen extends StatefulWidget{
     
     class SecondScreenState extends State<SecondScreen>{
 
-      Map data;
-
+       List data; 
 @override
   void initState() {
     super.initState();
@@ -23,22 +22,22 @@ class SecondScreen extends StatefulWidget{
 
   }
 
-  void getJsonData(BuildContext context) async{
+   void getJsonData(BuildContext context) async{
 
     var response = await http.get(
       Uri.encodeFull(api),
-      headers: {"Accept":"applicaation/json"}
+      headers: {"Accept":"application/json"}
     );
-    print(response.body);
+      var convertJsonToData = json.decode(response.body);
+    print(convertJsonToData.length.toString());
 
     setState(() {
-      var convertDataToJson = json.decode(response.body);
-      print("--------------------------------------------");
-      print(data);
-      data = convertDataToJson['data']["date"]; 
+      var convertJsonToData = json.decode(response.body);
+      data = convertJsonToData;
     });
   }
 
+  
 
   @override
   Widget build(BuildContext context) {
@@ -47,20 +46,26 @@ class SecondScreen extends StatefulWidget{
         title: Text("Second Screen"),
       ),
       body: ListView.builder(
-          itemCount: data==null?0:data.length,
+          itemCount:data.length==null? 0:data.length,
           itemBuilder: (BuildContext context, int index){
             return new Container(
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    new Card(
-                      child: Container(
-                        child: Text(data[index]['date']),
-                        padding: EdgeInsets.all(20.0),
-                      ),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
                     ),
-                  ],
+                      new Card(
+                      child: Container(  
+                        child: ListTile(
+                          title: Text(data[index]["date"]),
+                          leading: Text(data[index]["description"]),
+                        ),
+                      padding: EdgeInsets.all(20.0),
+                      ),
+                    ),   
+                    ],
                 ),
               ),
             );
