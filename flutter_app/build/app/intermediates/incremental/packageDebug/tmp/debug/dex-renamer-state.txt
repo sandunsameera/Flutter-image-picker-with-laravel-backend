@@ -1,4 +1,4 @@
-#Tue Aug 27 06:24:05 IST 2019
+#Tue Aug 27 22:39:45 IST 2019
 base.0=C\:\\Users\\deemonface\\Desktop\\Flutter-image-picker-with-node-backend\\flutter_app\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

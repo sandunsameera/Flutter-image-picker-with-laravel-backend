@@ -38,7 +38,6 @@ class SecondScreen extends StatefulWidget{
   }
 
   
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +63,8 @@ class SecondScreen extends StatefulWidget{
                             icon: Icon(Icons.delete,color: Colors.white,),
                             onPressed: (){},
                           ),
-                          title: Text(data[index]["date"]),
-                          leading: Text(data[index]["description"]),
+                          leading: Text(data[index]["date"]),
+                          title: Text(data[index]["description"]),
                         ),
                       padding: EdgeInsets.all(10.0),
                       ),
