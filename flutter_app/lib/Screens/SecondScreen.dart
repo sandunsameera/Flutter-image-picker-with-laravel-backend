@@ -57,12 +57,17 @@ class SecondScreen extends StatefulWidget{
                       padding: EdgeInsets.all(10.0),
                     ),
                       new Card(
+                        color: Colors.teal,
                       child: Container(  
                         child: ListTile(
+                          trailing: IconButton(
+                            icon: Icon(Icons.delete,color: Colors.white,),
+                            onPressed: (){},
+                          ),
                           title: Text(data[index]["date"]),
                           leading: Text(data[index]["description"]),
                         ),
-                      padding: EdgeInsets.all(20.0),
+                      padding: EdgeInsets.all(10.0),
                       ),
                     ),   
                     ],
