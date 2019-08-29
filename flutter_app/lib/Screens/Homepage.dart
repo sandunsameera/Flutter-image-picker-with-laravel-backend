@@ -6,9 +6,14 @@ import 'package:flutter_app/Screens/SecondScreen.dart';
 import 'package:flutter_app/Widget/LabelTextField.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Shared.dart';
 
 
 String apiUrl = "http://10.0.2.2:8000/api/photo";
+
+String date="";
 
 class Homepage extends StatefulWidget {
   @override
@@ -23,7 +28,13 @@ class HomepageState extends State<Homepage> {
   static TextEditingController _descriptionController = TextEditingController();
   File _image;
 
-
+    Future<String>shearedpref () async{
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      preferences.setString(date,_dateController.text);
+    print("----------------------------");
+    print("----------------------------");
+    print(date);
+    }
   void create(BuildContext context) async{
     final Map<String, dynamic> data={
       'date' :_dateController.text,
@@ -101,6 +112,7 @@ class HomepageState extends State<Homepage> {
                 RaisedButton(
                child: Icon(Icons.done),
                onPressed: (){
+                 shearedpref();
                  create(context);
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>SecondScreen()));
                },
@@ -108,6 +120,7 @@ class HomepageState extends State<Homepage> {
              RaisedButton(
                child: Text("View data"),
                onPressed: (){
+                 
                  Navigator.push(context, MaterialPageRoute(
                    builder: (context)=>SecondScreen(),
                  ));
@@ -116,7 +129,17 @@ class HomepageState extends State<Homepage> {
               ],
                
             ),
-            )
+            ),
+            Center(
+              child: RaisedButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(
+                                builder: (context)=>Shared()
+                              ));
+                },
+                child: Text("Shared preference"),
+              ),
+            ),
           ],
         ),
       ),

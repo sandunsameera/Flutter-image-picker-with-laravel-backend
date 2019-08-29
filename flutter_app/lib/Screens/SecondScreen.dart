@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Screens/Shared.dart';
 import 'package:http/http.dart'as http;
   String api = "http://10.0.2.2:8000/api/photoRetrieve";
 
@@ -61,7 +62,6 @@ class SecondScreen extends StatefulWidget{
                           trailing: IconButton(
                             icon: Icon(Icons.delete,color: Colors.white,),
                             onPressed: (){
-                              
                             },
                           ),
                           leading: Text(data[index]["date"]),
