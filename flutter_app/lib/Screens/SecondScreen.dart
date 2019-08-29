@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
   String api = "http://10.0.2.2:8000/api/photoRetrieve";
@@ -61,7 +60,9 @@ class SecondScreen extends StatefulWidget{
                         child: ListTile(
                           trailing: IconButton(
                             icon: Icon(Icons.delete,color: Colors.white,),
-                            onPressed: (){},
+                            onPressed: (){
+                              
+                            },
                           ),
                           leading: Text(data[index]["date"]),
                           title: Text(data[index]["description"]),
