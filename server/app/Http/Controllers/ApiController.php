@@ -12,6 +12,10 @@ class ApiController extends Controller
 
         $photo -> date = $request->input('date');
         $photo -> description = $request->input('description');
+        $filename = "user_image.jpg";
+        $path=$request->file('photo')->move(public_path("/"),$filename);
+        $photoUrl=url('/'.$filename);
+        return response()->json(['url'=>$photoUrl],200);
         $photo->save();
         return response()->json($photo);
     }
@@ -20,6 +24,10 @@ class ApiController extends Controller
         $photo = photo::all();
         return response()->json($photo);
 
+
+    }
+
+    public function photoUpload(Request $request){
 
     }
 }
