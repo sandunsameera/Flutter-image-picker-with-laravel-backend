@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/photo', 'ApiController@create');
 Route::get('/photoRetrieve', 'ApiController@retrieve');
 Route::post('/photoUpload', 'ApiController@photoUpload');
+Route::delete('/photoDelete', 'ApiController@photoDelete');
