@@ -25,3 +25,8 @@ Route::delete('/photoDelete', 'ApiController@photoDelete');
 Route::delete('/photoDelete', 'ApiController@photoDelete');
 Route::delete('/photoDelete', 'ApiController@photoDelete');
 Route::delete('/photoDelete', 'ApiController@photoDelete');
+Route::delete('/photoDelete', 'ApiController@photoDelete');
+Route::delete('/photoDelete', 'ApiController@photoDelete');
+Route::delete('/photoDelete', 'ApiController@photoDelete');
+Route::delete('/photoDelete', 'ApiController@photoDelete');
+Route::delete('/photoDelete', 'ApiController@photoDelete');
