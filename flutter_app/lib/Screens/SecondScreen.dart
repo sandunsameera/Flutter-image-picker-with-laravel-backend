@@ -42,7 +42,7 @@ class SecondScreen extends StatefulWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Second Screen"),
+        title: Text("Second Screen appsmnajs"),
       ),
       body: ListView.builder(
           itemCount:data.length==null? 0:data.length,
